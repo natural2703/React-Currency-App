@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {currencies:[1,2,3,4]};
+const initialState = {currencies:[]};
 export const currSlice = createSlice({
     name:'curr',
     initialState,

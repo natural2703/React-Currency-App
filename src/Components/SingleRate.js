@@ -6,7 +6,18 @@ const SingleRate = ({currency}) =>{
     }
     return(
         <li onClick={(e)=>clickHandler(e,currency.currency)}>
-            <p>{currency.currency}</p>
+                <div>
+                    <p>{currency.currency}</p>
+                </div>
+                <div>
+                    <p>{currency.code}</p>
+                </div>
+                <div>
+                    <p>{currency.bid}</p>
+                </div>
+                <div>
+                    <p>{currency.ask}</p>
+                </div>
         </li>
     )
 }

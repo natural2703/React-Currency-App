@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { sortByBid, feedData } from "../Redux/CurrSlice";
 import RatesHeader from "./RatesHeader";
@@ -32,7 +32,6 @@ const RatesList = ()=>{
     return(
         <ul>
             <RatesHeader/>
-            <p onClick={(e)=>sortByBid()}>KLIKNIJ</p>
             {currencies.map((curr)=>{
                  return <SingleRate key={Math.random()} currency={curr}/>
             })}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import SingleDetail from "./SingleDetail";
 import DetailsHeader from './DetailsHeader'
+import Cookies from "universal-cookie/es6";
 import '../styles/details.css'
 const Details = ()=>{
     const {currCode} = useParams();
@@ -15,20 +16,33 @@ const Details = ()=>{
     const [askSort,setAskSort] = useState(1);
     const [bidSort,setBidSort] = useState(1)
     const [request, setRequest] = useState("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/2022-01-01/2021-01-20?format=json")
+    useEffect(()=>{
+        const cookies = new Cookies();
+        cookies.set('startDate', startDate, { path: '/' });
+        cookies.set('endDate',endDate,{path:'/'})
+        console.log(cookies.get('startDate'));
+    },[])
     //console.log(coursesList)
     useEffect(()=>{
-        
+        try{
         const date = new Date(endDate);
         const sDate = new Date(startDate);
-       // const query = date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()
-        //const query = date.getFullYear()+"-"+date.getMonth()+'-'+date.getDate()
-        //console.log(query+'asd');
-        const t = date.toISOString().split('T')[0];
-        const t2 = sDate.toISOString().split('T')[0];
-        setRequest("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/"+t2+"/"+t+"?format=json");
+        if(date>sDate){
+            const t = date.toISOString().split('T')[0];
+            const t2 = sDate.toISOString().split('T')[0];
+            //console.log(date>sDate);
+            setRequest("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/"+t2+"/"+t+"?format=json");
+            setError('')
+        }
+        else{
+            setError("ZŁY ZAKRES DAT!@@@!")
+        }
+    }
+        catch(err){
+            
+        }
     },[endDate,startDate])
-    
-    //const request = "https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/2021-01-01/2021-01-20?format=json";
+
     const fetchData = ()=>{
         axios.get(''+request)
         .then(curr=>{
@@ -83,6 +97,7 @@ const Details = ()=>{
             <h1>details</h1>
             <h2>{currCode?currCode:'Nie podano naglowka'}</h2>
             <h3>{coursesList.length}</h3>
+            <h3>{error}</h3>
             <form className="containter">
                 <div className="item">
                     <label>Od:</label>

@@ -10,11 +10,14 @@ const RatesList = ()=>{
     useEffect(()=>{
         // dodaj local storage !!!
         const data = localStorage.getItem('currencies');
-        if(!data) console.log('no data!!!!')
+        if(data){console.log(data)}
         axios.get("https://api.nbp.pl/api/exchangerates/tables/c?format=json")
         .then(data=>{
             console.log(data.data[0].rates)
             dispatcher(feedData(data.data[0].rates))
+            if(!data){
+                localStorage.setItem('currencies',data.data[0].rates);
+            }
         })
         .catch(error=>console.log(error))
         

@@ -1,1 +1,1 @@
-Przygotowałem prosty kalkulator walut uzywajac api nbp. Technologie to react, redux/toolkit
+Przygotowałem prosty kalkulator walut uzywajac api nbp. Technologie to react, redux/toolkit i router v6. Do prostego stylowania uzywam css grid/flexbox

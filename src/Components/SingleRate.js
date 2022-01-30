@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import './styles/singleRate.css'
 const SingleRate = ({currency}) =>{
+    const nav = useNavigate();
     const clickHandler = (e,curr)=>{
         e.preventDefault();
-        console.log("nav to "+ curr)
+        nav('/details/'+curr);
     }
     return(
-        <li onClick={(e)=>clickHandler(e,currency.currency)}>
+        <li onClick={(e)=>clickHandler(e,currency.code)}>
                 <div>
                     <p>{currency.currency}</p>
                 </div>

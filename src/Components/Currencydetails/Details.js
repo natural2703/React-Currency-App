@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import SingleDetail from "./SingleDetail";
@@ -8,6 +8,7 @@ import Cookies from "universal-cookie/es6";
 import '../styles/details.css'
 
 const Details = ()=>{
+    const nav = useNavigate();
     const {currCode} = useParams();
     const [startDate,setStartDate] = useState(new Date(2021, 6, 24));
     const [endDate,setEndDate] = useState(new Date(2022, 0, 24));
@@ -108,6 +109,7 @@ const Details = ()=>{
         <div>
             
             <h1>details</h1>
+            <button onClick={(e)=>{nav('/')}}>Powrot do poprzedniej strony</button>
             <h2>{currCode?currCode:'Nie podano naglowka'}</h2>
             <h3>{coursesList.length}</h3>
             <h3>{error}</h3>

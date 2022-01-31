@@ -18,6 +18,9 @@ const RatesList = ()=>{
             if(!data){
                 localStorage.setItem('currencies',data.data[0].rates);
             }
+            else{
+                console.log('dane sa dodaj je do reduxa');
+            }
         })
         .catch(error=>console.log(error))
         

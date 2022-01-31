@@ -1,0 +1,9 @@
+.navContainer{
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.navItem{
+    flex: 1;
+}

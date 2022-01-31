@@ -6,6 +6,7 @@ import SingleDetail from "./SingleDetail";
 import DetailsHeader from './DetailsHeader'
 import Cookies from "universal-cookie/es6";
 import '../styles/details.css'
+
 const Details = ()=>{
     const {currCode} = useParams();
     const [startDate,setStartDate] = useState(new Date(2021, 6, 24));
@@ -18,9 +19,15 @@ const Details = ()=>{
     const [request, setRequest] = useState("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/2022-01-01/2021-01-20?format=json")
     useEffect(()=>{
         const cookies = new Cookies();
-        cookies.set('startDate', startDate, { path: '/' });
-        cookies.set('endDate',endDate,{path:'/'})
-        console.log(cookies.get('startDate'));
+        /*cookies.set('dates', {
+        startDate
+        ,endDate
+        }, { path: '/' });*/
+        if(cookies.get('dates')){
+            setStartDate(cookies.get('dates').startDate);
+            setEndDate(cookies.get('dates').endDate);
+        }
+        console.log(cookies.get('dates'));
     },[])
     //console.log(coursesList)
     useEffect(()=>{
@@ -41,6 +48,12 @@ const Details = ()=>{
         catch(err){
             
         }
+    const cookies = new Cookies();
+    cookies.set('dates', {
+        startDate,
+        endDate,
+        currCode
+        }, { path: '/' });
     },[endDate,startDate])
 
     const fetchData = ()=>{

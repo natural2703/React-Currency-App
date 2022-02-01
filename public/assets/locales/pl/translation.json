@@ -1,0 +1,37 @@
+{
+    "details_header_bid":"cena s",
+    "details_header_ask":"cena z",
+    "details_btn":"usun",
+    "details_header_data":"dane",
+
+    "details_get_data_btn":"gpobierz dane",
+    "details_data_from":"od",
+    "details_data_to":"do",
+    "details_back_btn":"powrot",
+    "details":"szczegoly o walutach",
+
+    "header_header":"Kalkulator walut i tabele kursow ",
+    
+    "nav_tab":"Tabela kursow",
+    "nav_calc":"Kalkulator",
+    "nav_details":"szczegoly",
+
+    
+    "not_found_h1":"Bardzo mi przykro, ale podana strona nie istnieje :(",
+    "not_found_h3":"Proszę kliknij link poniżej i powróć do strony głównej",
+    "not_found_btn":"Powrot",
+
+    "rates_header_name":"nazwa",
+    "rates_header_sh":"skrot",
+    "rates_header_bid":"cena z",
+    "rates_header_ask":"cena s",
+
+    "header":"Przykladowy kalkulator",
+    "calculatorCurrency":"waluta",
+    "calculatorExchangeCurrency":"na co wymieniam",
+    "changeCurrenciesBtn":"wymien waluty",
+    "calculatorValue":"kwota",
+    "calculatorResult":"rezultat",
+
+    "footer":"stopka TMP"
+}

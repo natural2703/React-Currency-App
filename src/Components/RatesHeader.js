@@ -1,17 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 const RatesHeader = ()=>{
+    const {t} = useTranslation();
     return(
         <li>
                 <div>
-                    <p>Nazwa</p>
+                    <p>{t('rates_header_name')}</p>
                 </div>
                 <div>
-                    <p>Skrot</p>
+                    <p>{t('rates_header_sh')}</p>
                 </div>
                 <div>
-                    <p>Bid</p>
+                    <p>{t('rates_header_bid')}</p>
                 </div>
                 <div>
-                    <p>Ask</p>
+                    <p>{t('rates_header_ask')}</p>
                 </div>
         </li>
     )

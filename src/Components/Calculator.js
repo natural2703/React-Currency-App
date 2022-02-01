@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import './styles/calculator.css'
+
+
 const Calculator = ()=>{
     const currencies = useSelector(data=>data.currency.currencies)
     const [selectedCurrency, setSelectedCurrency] = useState('dolar amerykański');
     const [exchangeCurrency,setExchangeCurrency] = useState('dolar amerykański');
     const [amount, setAmount] = useState(0);
-   // console.log(currencies)
     const [result,setResult] = useState(0);
-   
+    const {t} = useTranslation();
     const countHandler = (e)=>{
         e.preventDefault();
-        
-        
        console.log(selectedCurrency + " " + exchangeCurrency)
        const selectedPrice = currencies.find(curr=>curr.currency === selectedCurrency).bid;
        const excPrice = currencies.find(curr=>curr.currency === exchangeCurrency).bid;
@@ -20,9 +20,16 @@ const Calculator = ()=>{
        console.log(selectedPrice + " " + excPrice + " ratio " + ratio * amount);
        setResult(ratio * amount)
     }
+    const replaceCurr = (e)=>{
+        e.preventDefault();
+        const tmpCurr = selectedCurrency;
+        setSelectedCurrency(exchangeCurrency);
+        setExchangeCurrency(tmpCurr);
+    }
+    
     return(
         <div>
-            <h1>Przykładowy kalkulator walut</h1>  
+            <h1>{t('calculator_header')}</h1>  
             <form onSubmit={countHandler}>
                 <div className="calcCtn">
                     <div className="calculatorCell">
@@ -38,7 +45,7 @@ const Calculator = ()=>{
                         </select>
                     </div>
                     <div className="calculatorCell">
-                        <button>Zamien</button>
+                        <button onClick={replaceCurr}>Zamien</button>
                     </div>
                     <div className="calculatorCell">
                         <div>    

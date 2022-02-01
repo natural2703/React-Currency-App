@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
 import SingleDetail from "./SingleDetail";
 import DetailsHeader from './DetailsHeader'
 import Cookies from "universal-cookie/es6";
 import '../styles/details.css'
+import { useTranslation } from "react-i18next";
 
 const Details = ()=>{
     const nav = useNavigate();
+    const {t} = useTranslation();
     const {currCode} = useParams();
     const [startDate,setStartDate] = useState(new Date(2021, 6, 24));
     const [endDate,setEndDate] = useState(new Date(2022, 0, 24));
@@ -108,18 +109,18 @@ const Details = ()=>{
     return(
         <div>
             
-            <h1>details</h1>
-            <button onClick={(e)=>{nav('/')}}>Powrot do poprzedniej strony</button>
+            <h1>{t('details')}</h1>
+            <button onClick={(e)=>{nav('/')}}>{t('details_back_btn')}</button>
             <h2>{currCode?currCode:'Nie podano naglowka'}</h2>
             <h3>{coursesList.length}</h3>
             <h3>{error}</h3>
             <form className="containter">
                 <div className="item">
-                    <label>Od:</label>
+                    <label>{t('details_data_from')}</label>
                     <input type='date' value={startDate} onChange={(e)=>handleStartDate(e)}/>
                 </div>
                 <div className="item">
-                    <label>Do:</label>
+                    <label>{t('details_data_to')}</label>
                     <input type='date' value={endDate} onChange={(e)=>{handleEndDate(e)}}/>
                 </div>
                 <div className="item">
@@ -127,7 +128,7 @@ const Details = ()=>{
                     e.preventDefault()
                     fetchData();
                     }}>
-                    Pobierz dane
+                   {t('details_get_data_btn')}
                 </button>
                 </div>
             </form>

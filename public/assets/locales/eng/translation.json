@@ -1,0 +1,36 @@
+{
+    "details_header_bid":"bid",
+    "details_header_ask":"ask",
+    "details_btn":"delete",
+    "details_header_data":"data",
+
+    "details_get_data_btn":"get data",
+    "details_data_from":"from:",
+    "details_data_to":"to:",
+    "details_back_btn":"back to index",
+    "details":"details",
+
+    "header_header":"Curr calculator and courses",
+
+    "nav_tab":"Currency table",
+    "nav_calc":"calculator",
+    "nav_details":"details",
+
+    "not_found_h1":"msg1",
+    "not_found_h3":"msg3",
+    "not_found_btn":"back",
+
+    "rates_header_name":"name",
+    "rates_header_sh":"shortcut",
+    "rates_header_bid":"bid",
+    "rates_header_ask":"ask",
+
+    "calculator_header":"Example curr calc",
+    "calculatorCurrency":"curr",
+    "calculatorExchangeCurrency":"exc curr",
+    "changeCurrenciesBtn":"change currencies",
+    "calculatorValue":"amount",
+    "calculatorResult":"result",
+
+    "footer":"ENG stopka TMP"
+}

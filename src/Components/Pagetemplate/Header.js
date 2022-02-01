@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 const Header = ()=>{
+    const {t} = useTranslation();
     return(
         <header>
-            <h1>Kalkulator walut i tabele kursow</h1>
+            <h1>{t('header_header')}</h1>
         </header>
     )
 }

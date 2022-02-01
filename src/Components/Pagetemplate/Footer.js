@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 const Footer = ()=>{
+    const {t} = useTranslation()
     return(
         <footer>
-            <p>STOPKA TMP</p>
+            <p>{t('footer')}</p>
         </footer>
     )
 }

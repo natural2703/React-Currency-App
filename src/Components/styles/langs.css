@@ -1,0 +1,28 @@
+.langContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+.langsList{
+    border: none;
+    display: block;
+    border:1px solid black;
+    list-style-type: none;
+    width: 100%;
+}
+h3{
+   
+    text-align: center;
+    margin: 0 auto;
+}
+.sett{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid black;
+   
+}

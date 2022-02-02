@@ -33,23 +33,23 @@ const Calculator = ()=>{
             <form onSubmit={countHandler}>
                 <div className="calcCtn">
                     <div className="calculatorCell">
-                        <label>ilosc</label>
+                        <label>{t('calculator_Value')}</label>
                         <input type='number' onChange={(e)=>setAmount(e.target.value)}/>
                     </div>
                     <div className="calculatorCell">
                         <div>
-                            <label>waluta</label>
+                            <label>{t('calculator_Currency')}</label>
                         </div>
                         <select onChange={(e)=>setSelectedCurrency(e.target.value)}>
                             {currencies.map(curr=><option>{curr.currency}</option>)}
                         </select>
                     </div>
                     <div className="calculatorCell">
-                        <button onClick={replaceCurr}>Zamien</button>
+                        <button onClick={replaceCurr}>{t('change_Currencies_Btn')}</button>
                     </div>
                     <div className="calculatorCell">
                         <div>    
-                            <label>na co wymieniam</label>
+                            <label>{t('calculator_Exchange_Currency')}</label>
                         </div>
                         <select onChange={(e)=>setExchangeCurrency(e.target.value)}>
                             {currencies.map(curr=><option>{curr.currency}</option>)}
@@ -60,7 +60,7 @@ const Calculator = ()=>{
                         <input type='submit' value='przelicz'/>
                     </div>
                 </div>
-                <p>Wynik: {result}</p>
+                <p>{t('calculator_Result')} {result}</p>
             </form>
         </div>
     )

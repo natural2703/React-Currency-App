@@ -14,7 +14,7 @@
     
     "nav_tab":"Tabela kursow",
     "nav_calc":"Kalkulator",
-    "nav_details":"szczegoly",
+    "nav_details":"ustawienia",
 
     
     "not_found_h1":"Bardzo mi przykro, ale podana strona nie istnieje :(",
@@ -26,12 +26,12 @@
     "rates_header_bid":"cena z",
     "rates_header_ask":"cena s",
 
-    "header":"Przykladowy kalkulator",
-    "calculatorCurrency":"waluta",
-    "calculatorExchangeCurrency":"na co wymieniam",
-    "changeCurrenciesBtn":"wymien waluty",
-    "calculatorValue":"kwota",
-    "calculatorResult":"rezultat",
+    "calculator_header":"Przykladowy kalkulator",
+    "calculator_Currency":"waluta",
+    "calculator_Exchange_Currency":"na co wymieniam",
+    "change_Currencies_Btn":"wymien waluty",
+    "calculator_Value":"kwota",
+    "calculator_Result":"rezultat",
 
     "footer":"stopka TMP"
 }

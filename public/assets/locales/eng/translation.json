@@ -14,7 +14,7 @@
 
     "nav_tab":"Currency table",
     "nav_calc":"calculator",
-    "nav_details":"details",
+    "nav_details":"settings",
 
     "not_found_h1":"msg1",
     "not_found_h3":"msg3",
@@ -26,11 +26,11 @@
     "rates_header_ask":"ask",
 
     "calculator_header":"Example curr calc",
-    "calculatorCurrency":"curr",
-    "calculatorExchangeCurrency":"exc curr",
-    "changeCurrenciesBtn":"change currencies",
-    "calculatorValue":"amount",
-    "calculatorResult":"result",
+    "calculator_Currency":"currency",
+    "calculator_Exchange_Currency":"exc curr",
+    "change_Currencies_Btn":"change currencies",
+    "calculator_Value":"amount",
+    "calculator_Result":"result: ",
 
     "footer":"ENG stopka TMP"
 }

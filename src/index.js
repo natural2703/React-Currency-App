@@ -15,8 +15,8 @@ i18n
     .use(HttpApi)
     .init({
 
-        lng:'eng',
-        fallbackLng:'eng',
+        
+        fallbackLng:'pl',
         detection:{
           order:[ 'cookie', 'localStorage', 'sessionStorage', 'htmlTag', 'path', 'subdomain'],
           caches: ['localStorage', 'cookie']

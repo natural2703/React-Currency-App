@@ -19,6 +19,7 @@ const Details = ()=>{
     const [askSort,setAskSort] = useState(1);
     const [bidSort,setBidSort] = useState(1)
     const [request, setRequest] = useState("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/2022-01-01/2021-01-20?format=json")
+    const [buttonDisabled,setButtonDisabled] = useState(false);
     useEffect(()=>{
         const cookies = new Cookies();
         /*cookies.set('dates', {
@@ -36,15 +37,17 @@ const Details = ()=>{
         try{
         const date = new Date(endDate);
         const sDate = new Date(startDate);
-        if(date>sDate){
+        if(date>sDate && date<Date.now() && sDate<Date.now()){
             const t = date.toISOString().split('T')[0];
             const t2 = sDate.toISOString().split('T')[0];
             //console.log(date>sDate);
             setRequest("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/"+t2+"/"+t+"?format=json");
             setError('')
+            setButtonDisabled(false);
         }
         else{
             setError("ZŁY ZAKRES DAT!@@@!")
+            setButtonDisabled(true);
         }
     }
         catch(err){
@@ -105,7 +108,19 @@ const Details = ()=>{
         setAskSort(askSort+1);
         setCoursesList(sorted);
     }
-
+    const sortByDate=()=>{
+        /*let item = coursesList[0];
+        for(let i=0;i<coursesList.length;i++){
+            console.log(Date.parse(coursesList[i].effectiveDate))
+        }*/
+        let sorted = [...coursesList].sort((
+            (a,b)=>{return Date.parse(a.effectiveDate)-Date.parse(b.effectiveDate)}
+        ));
+        setCoursesList(sorted)
+    }
+    const deleteItem =(effectiveDate)=>{
+        setCoursesList(coursesList.filter(item=>item.effectiveDate!==effectiveDate));
+    }
     return(
         <div>
             
@@ -124,7 +139,7 @@ const Details = ()=>{
                     <input type='date' value={endDate} onChange={(e)=>{handleEndDate(e)}}/>
                 </div>
                 <div className="item">
-                <button onClick={(e)=>{
+                <button disabled={buttonDisabled} onClick={(e)=>{
                     e.preventDefault()
                     fetchData();
                     }}>
@@ -132,9 +147,9 @@ const Details = ()=>{
                 </button>
                 </div>
             </form>
-            {coursesList.length>0?<DetailsHeader sortByBid={sortByBid} sortByAsk={sortByAsk}/>:<></>}
+            {coursesList.length>0?<DetailsHeader sortByBid={sortByBid} sortByAsk={sortByAsk} sortByDate={sortByDate}/>:<></>}
             {coursesList.map(item=>{
-                return <SingleDetail currency={item} key={item.no}/>
+                return <SingleDetail currency={item} key={item.no} deleteItem={deleteItem}/>
             })}
         </div>
     )

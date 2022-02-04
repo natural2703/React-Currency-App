@@ -20,9 +20,17 @@ export const currSlice = createSlice({
                     return b.bid-a.bid;
                 }
             )
+            //console.log('works');
+        },
+        sortByAsk(state){
+            state.currencies.sort(
+                (a,b)=>{
+                    return a.bid-b.bid;
+                }
+            )
         }
     }
 })
 
-export const {add,feedData,sortByBid} = currSlice.actions;
+export const {add,feedData,sortByBid,sortByAsk} = currSlice.actions;
 export default currSlice.reducer

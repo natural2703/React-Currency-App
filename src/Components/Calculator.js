@@ -2,15 +2,25 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import './styles/calculator.css'
-
-
+import { feedData } from '../Redux/CurrSlice';
+import fetchCurrency from '../aios/fetchCurrency';
 const Calculator = ()=>{
     const currencies = useSelector(data=>data.currency.currencies)
     const [selectedCurrency, setSelectedCurrency] = useState('dolar amerykański');
     const [exchangeCurrency,setExchangeCurrency] = useState('dolar amerykański');
     const [amount, setAmount] = useState(0);
     const [result,setResult] = useState(0);
+    const dispatcher = useDispatch();
     const {t} = useTranslation();
+    useEffect(()=>{
+        if(currencies.length==0){
+            //const c = localStorage.getItem('currencies');
+            //console.log(c.length);
+            const data = fetchCurrency(dispatcher);
+            console.log(data);
+            //dispatcher(feedData(data))
+        }
+    },[]);
     const countHandler = (e)=>{
         e.preventDefault();
        console.log(selectedCurrency + " " + exchangeCurrency)
@@ -22,6 +32,7 @@ const Calculator = ()=>{
     }
     const replaceCurr = (e)=>{
         e.preventDefault();
+        console.log(e);
         const tmpCurr = selectedCurrency;
         setSelectedCurrency(exchangeCurrency);
         setExchangeCurrency(tmpCurr);
@@ -51,8 +62,8 @@ const Calculator = ()=>{
                         <div>    
                             <label>{t('calculator_Exchange_Currency')}</label>
                         </div>
-                        <select onChange={(e)=>setExchangeCurrency(e.target.value)}>
-                            {currencies.map(curr=><option>{curr.currency}</option>)}
+                        <select onChange={(e)=>setExchangeCurrency(e.target.value) }>
+                            {currencies.map(curr=><option value={curr.currency}>{curr.currency}</option>)}
                             
                         </select>
                     </div>

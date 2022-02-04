@@ -12,12 +12,12 @@ const UserSettings = ()=>{
     return(
         <div className="langContainer">
             <h3>Lang list</h3>
-            <ul>
+            <div>
             {options.langs.map(curr=>{
-                return <li onClick={()=>changeLang(curr)} className="langsList" key={curr.code}>{curr.name}</li>
+                return <div onClick={()=>changeLang(curr)} className="singleLang" key={curr.code}>{curr.name}</div>
             })}
             
-            </ul>
+            </div>
         </div>
     )
 }

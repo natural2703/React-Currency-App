@@ -17,7 +17,8 @@ const Details = ()=>{
     const [data,setData] = useState({});
     const [coursesList,setCoursesList] = useState([]);
     const [askSort,setAskSort] = useState(1);
-    const [bidSort,setBidSort] = useState(1)
+    const [bidSort,setBidSort] = useState(1);
+    const [dateSort,setDateSort] = useState(1);
     const [request, setRequest] = useState("https://api.nbp.pl/api/exchangerates/rates/c/"+currCode+"/2022-01-01/2021-01-20?format=json")
     const [buttonDisabled,setButtonDisabled] = useState(false);
     useEffect(()=>{
@@ -113,9 +114,13 @@ const Details = ()=>{
         for(let i=0;i<coursesList.length;i++){
             console.log(Date.parse(coursesList[i].effectiveDate))
         }*/
-        let sorted = [...coursesList].sort((
-            (a,b)=>{return Date.parse(a.effectiveDate)-Date.parse(b.effectiveDate)}
-        ));
+        let sorted = dateSort%2==0?[...coursesList].sort((     
+            (a,b)=>{return Date.parse(a.effectiveDate)-Date.parse(b.effectiveDate)}  
+        )):
+        [...coursesList].sort((     
+            (b,a)=>{return Date.parse(a.effectiveDate)-Date.parse(b.effectiveDate)}  
+        ))
+        setDateSort(dateSort+1);
         setCoursesList(sorted)
     }
     const deleteItem =(effectiveDate)=>{

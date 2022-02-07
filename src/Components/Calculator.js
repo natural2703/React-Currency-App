@@ -39,9 +39,9 @@ const Calculator = ()=>{
     }
     
     return(
-        <div>
+        <div className="calculatorCtn">
             <h1>{t('calculator_header')}</h1>  
-            <form onSubmit={countHandler}>
+            <form onSubmit={countHandler} className="calcForm">
                 <div className="calcCtn">
                     <div className="calculatorCell">
                         <label>{t('calculator_Value')}</label>
@@ -55,8 +55,8 @@ const Calculator = ()=>{
                             {currencies.map(curr=><option>{curr.currency}</option>)}
                         </select>
                     </div>
-                    <div className="calculatorCell">
-                        <button onClick={replaceCurr}>{t('change_Currencies_Btn')}</button>
+                    <div className="calculatorCell changeBtn">
+                        <button className='calcBtn' onClick={replaceCurr}>{t('change_Currencies_Btn')}</button>
                     </div>
                     <div className="calculatorCell">
                         <div>    
@@ -64,11 +64,10 @@ const Calculator = ()=>{
                         </div>
                         <select onChange={(e)=>setExchangeCurrency(e.target.value) }>
                             {currencies.map(curr=><option value={curr.currency}>{curr.currency}</option>)}
-                            
                         </select>
                     </div>
                     <div className="calculatorCell">
-                        <input type='submit' value='przelicz'/>
+                        <input type='submit' value='przelicz' className="calcBtn"/>
                     </div>
                 </div>
                 <p>{t('calculator_Result')} {result}</p>

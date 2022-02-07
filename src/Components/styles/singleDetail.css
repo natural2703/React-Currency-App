@@ -3,6 +3,16 @@
     grid-template-columns: 1fr 1fr 1fr 1fr ;
     border: 1px solid black;
 }
-button{
-    display: inline-block;
+
+
+@media only screen and (max-width: 400px){
+    .delCurrBtn{
+        display: none;
+    }
+    .container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .deleteHeader{
+        display: none;
+    }
 }

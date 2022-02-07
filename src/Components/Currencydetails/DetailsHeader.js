@@ -7,7 +7,7 @@ const DetailsHeader = ({sortByBid,sortByAsk,sortByDate})=>{
                 <p onClick={sortByDate}>{t('details_header_data')}</p>
                 <p onClick={sortByBid}>{t('details_header_bid')}</p>
                 <p onClick={sortByAsk}>{t('details_header_ask')}</p>
-                <p>{t('details_btn')}?</p>
+                <p className="deleteHeader">{t('details_btn')}?</p>
         </div>
     )
 }

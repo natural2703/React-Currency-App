@@ -14,18 +14,26 @@ export const currSlice = createSlice({
             })*/
             state.currencies = data.payload;
         },
-        sortByBid(state){
+        sortByBid(state,data){
             state.currencies.sort(
+                data.payload%2==0?
                 (a,b)=>{
                     return b.bid-a.bid;
+                }:
+                (a,b)=>{
+                    return a.bid-b.bid;
                 }
             )
             //console.log('works');
         },
-        sortByAsk(state){
+        sortByAsk(state,data){
             state.currencies.sort(
+                data.payload%2==0?
                 (a,b)=>{
-                    return a.bid-b.bid;
+                    return a.ask-b.ask;
+                }:
+                (b,a)=>{
+                    return a.ask-b.ask;
                 }
             )
         }

@@ -6,4 +6,10 @@
 }
 .navItem{
     flex: 1;
+    padding: 0.25em;
+}
+@media only screen and (max-width: 500px){
+    .navContainer{
+        flex-direction: column;
+    }
 }

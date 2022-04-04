@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { sortByBid, feedData,sortByAsk } from "../Redux/CurrSlice";
+import { sortByBid, feedData,sortByAsk, sortByName } from "../Redux/CurrSlice";
 import RatesHeader from "./RatesHeader";
 import SingleRate from "./SingleRate";
 import './styles/ratesList.css'
@@ -39,9 +39,16 @@ const RatesList = ()=>{
         dispatcher(sortByAsk(sortAskDecision))
         setSortAskDecision(sortAskDecision+1);
     }
+    const sortName = ()=>{
+        console.log('works')
+        dispatcher(sortByName());
+    }
+    const sortSh = ()=>{
+
+    }
     return(
         <div class="myCurrCtn">
-            <RatesHeader sortBid={sortBid} sortAsk={sortAsk}/>
+            <RatesHeader sortBid={sortBid} sortAsk={sortAsk} sortName={sortName} sortSh={sortSh}/>
             {currencies.map((curr)=>{
                  return <SingleRate key={Math.random()} currency={curr}/>
             })}

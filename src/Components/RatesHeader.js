@@ -1,15 +1,15 @@
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
-const RatesHeader = ({sortBid,sortAsk})=>{
+const RatesHeader = ({sortBid,sortAsk,sortName,sortSh})=>{
     const {t} = useTranslation();
     
     return(
         <li>
                 <div>
-                    <p>{t('rates_header_name')}</p>
+                    <p onClick={sortName}>{t('rates_header_name')}</p>
                 </div>
                 <div>
-                    <p>{t('rates_header_sh')}</p>
+                    <p onClick={sortSh}>{t('rates_header_sh')}</p>
                 </div>
                 <div>
                     <p onClick={sortBid}>{t('rates_header_bid')}</p>

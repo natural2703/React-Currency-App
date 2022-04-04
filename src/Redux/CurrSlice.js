@@ -36,9 +36,17 @@ export const currSlice = createSlice({
                     return a.ask-b.ask;
                 }
             )
+        },
+        sortByName(state){
+            state.currencies.sort(
+                (a,b)=>{
+                    console.log(a.code[0]-b.code[0])
+                    return b.code.charCodeAt(0)-a.charCodeAt(0);
+                }
+            );
         }
     }
 })
 
-export const {add,feedData,sortByBid,sortByAsk} = currSlice.actions;
+export const {add,feedData,sortByBid,sortByAsk,sortByName} = currSlice.actions;
 export default currSlice.reducer

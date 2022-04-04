@@ -37,11 +37,14 @@ export const currSlice = createSlice({
                 }
             )
         },
-        sortByName(state){
+        sortByName(state,data){
+            console.log('TUTAJ JEST')
             state.currencies.sort(
                 (a,b)=>{
-                    console.log(a.code[0]-b.code[0])
-                    return b.code.charCodeAt(0)-a.charCodeAt(0);
+                   if(data.payload.index%2==0)
+                        return (a.code>b.code?1:-1);
+                    else
+                        return (a.code>b.code?-1:1);
                 }
             );
         }

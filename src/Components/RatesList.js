@@ -23,6 +23,7 @@ const RatesList = ()=>{
     },[])
     const [sortAskDecision,setSortAskDecision] = useState(0);
     const [sortBidDecision,setSortBidDecision] = useState(0);
+    const [sortByFullName,setSortByName] = useState(1);
     const dispatcher = useDispatch()
     let currencies = useSelector(data=>data.currency.currencies);
     
@@ -40,11 +41,12 @@ const RatesList = ()=>{
         setSortAskDecision(sortAskDecision+1);
     }
     const sortName = ()=>{
-        console.log('works')
-        dispatcher(sortByName());
+        //console.log('works')
+        dispatcher(sortByName({index:sortByFullName}));
+        setSortByName(sortByFullName+1);
     }
     const sortSh = ()=>{
-
+        sortName();
     }
     return(
         <div class="myCurrCtn">
